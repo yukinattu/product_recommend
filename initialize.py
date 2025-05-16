@@ -15,11 +15,13 @@ from dotenv import load_dotenv
 import streamlit as st
 from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
+
 from langchain_community.retrievers import BM25Retriever
 from langchain.retrievers import EnsembleRetriever
 import utils
 import constants as ct
+
+from langchain_community.vectorstores import FAISS
 
 
 ############################################################
@@ -109,7 +111,7 @@ def initialize_retriever():
         docs_all.append(doc.page_content)
 
     embeddings = OpenAIEmbeddings()
-    db = Chroma.from_documents(docs, embedding=embeddings)
+    db = FAISS.from_documents(docs, embedding=embeddings)
 
     retriever = db.as_retriever(search_kwargs={"k": ct.TOP_K})
 
