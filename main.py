@@ -37,7 +37,7 @@ try:
     initialize()
 except Exception as e:
     logger.error(f"{ct.INITIALIZE_ERROR_MESSAGE}\n{e}")
-    st.error(utils.build_error_message(ct.INITIALIZE_ERROR_MESSAGE))
+    st.error(f"❌ 初期化エラーの詳細: {e}", icon="🚨")
     st.stop()
 
 # アプリ起動時のログ出力
