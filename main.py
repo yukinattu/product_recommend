@@ -5,6 +5,7 @@
 ############################################################
 # ライブラリの読み込み
 ############################################################
+import os
 from dotenv import load_dotenv
 import logging
 import streamlit as st
@@ -13,6 +14,7 @@ from initialize import initialize
 import components as cn
 import constants as ct
 import openai
+
 
 openai.api_key = os.getenv("OPENAI_API_KEY") 
 
